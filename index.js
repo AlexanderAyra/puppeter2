@@ -1,6 +1,17 @@
-const browserObject = require('./browser')
-const scraperController = require('./pageController')
+const express = require('express');
+const cors = require('cors');
 
-let browserInstance = browserObject.startBrowser()
+const app = express();
 
-scraperController(browserInstance)
+app.use(cors({
+  origin: 'http://localhost:3000',
+  methods: "POST"
+}))
+
+app.use(require('./routers/jobs'));
+
+const PORT = process.env.PORT || 3000
+
+app.listen(PORT, () => {
+  console.log('Trabajando el el puerto ' + PORT);
+})

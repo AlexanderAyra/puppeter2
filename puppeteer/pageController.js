@@ -6,7 +6,7 @@ async function scrapeAll(browserInstance) {
     browser = await browserInstance;
     await pageScraper.scraper(browser);
   } catch (error) {
-    console.log('No se pudo resolver la instancia');
+    console.log('No se pudo resolver la instancia' + error);
   }
 }
 

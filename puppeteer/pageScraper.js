@@ -1,4 +1,4 @@
-const metod = require('./metodos')
+const metod = require('../methods')
 
 const scraperObject = {
   url: 'https://devats.krowdy.com/',
@@ -40,8 +40,10 @@ const scraperObject = {
     await metod.btnAgregarEtapa(page);
     await metod.nuevaTarea(page);
     await metod.btnVideoEntrevista(page);
-    await metod.addCompetencia(page);
-    await metod.addCompetencia2(page);
+    await metod.btnAddCompetencia(page);
+    await metod.selectCheckBox(page);
+    await metod.btnGuardarVidConf(page);
+    await metod.btnActivarTarea(page)
   }
 }
 

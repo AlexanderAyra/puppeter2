@@ -2,8 +2,8 @@ const metod = {
   async iniciarSesion(page) {
     //await page.waitForTimeout(2000)
     console.log('Iniciando Sesion');
-    await page.type('div.MuiBox-root.jss193 > div:nth-child(1) > div > input', '')
-    await page.type('div.MuiBox-root.jss193 > div:nth-child(2) > div > input', '');
+    await page.type('div.MuiBox-root.jss193 > div:nth-child(1) > div > input', 'ramirovillenar.v.l@gmail.com')
+    await page.type('div.MuiBox-root.jss193 > div:nth-child(2) > div > input', 'Apple2020');
 
     await page.click('#root > div > div.MuiGrid-root.MuiGrid-item.MuiGrid-grid-xs-12.MuiGrid-grid-lg-4 > div > div.jss106 > div > div.MuiBox-root.jss193 > div.MuiBox-root.jss290.jss185 > button')
   },
@@ -32,7 +32,7 @@ const metod = {
     await page.keyboard.up('Control');
     await page.keyboard.press('Backspace');
 
-    await page.type('#root > div > div:nth-child(2) > div > main > div > div > div > div > div > div.header > div.title > div > div > div > div > div > input', 'job1', { delay: 100 })
+    await page.type('#root > div > div:nth-child(2) > div > main > div > div > div > div > div > div.header > div.title > div > div > div > div > div > input', 'job1', { delay: 1 })
   },
 
   async cambiarFecha(page) {
@@ -54,7 +54,8 @@ const metod = {
       document.querySelector('#job-company-container > div > a').click()
       return
     })
-    await page.type('#simple-popover > div.MuiPaper-root.MuiPopover-paper.MuiPaper-elevation8.MuiPaper-rounded > div > div.MuiCardContent-root > form > div > div > div > input', 'Chaos-Monkey', { delay: 100 });
+    await page.type('#simple-popover > div.MuiPaper-root.MuiPopover-paper.MuiPaper-elevation8.MuiPaper-rounded > div > div.MuiCardContent-root > form > div > div > div > input', 'Chaos-Monkey', { delay: 1 });
+    await page.waitForSelector('body > div.MuiAutocomplete-popper > div > ul > li')
     await page.evaluate(() => {
       const listSelect = document.querySelectorAll("body > div.MuiAutocomplete-popper > div > ul > li")
       listSelect[listSelect.length - 1].querySelector('li').click()
@@ -100,7 +101,7 @@ const metod = {
     await page.keyboard.up('Control');
     await page.keyboard.press('Backspace');
 
-    await page.type('#asociate-company > div > div > input', 'job1', { delay: 100 });
+    await page.type('#asociate-company > div > div > input', 'job1', { delay: 1 });
     await page.keyboard.press('Enter');
   },
 
@@ -127,7 +128,7 @@ const metod = {
     await page.waitForSelector('div.MuiCardContent-root > div > div > div.MuiPaper-root.MuiPaper-outlined.MuiPaper-rounded > div > button');
 
     await page.click('div.MuiCardContent-root > div > div > div.MuiPaper-root.MuiPaper-outlined.MuiPaper-rounded > div > button');
-    await page.type('body > div.MuiDialog-root > div.MuiDialog-container.MuiDialog-scrollPaper > div > div > div.MuiCardContent-root > div > div > div > div > div > div > div > div.MuiFormControl-root.MuiTextField-root.MuiFormControl-fullWidth > div > input', 'Lima', { delay: 200 });
+    await page.type('body > div.MuiDialog-root > div.MuiDialog-container.MuiDialog-scrollPaper > div > div > div.MuiCardContent-root > div > div > div > div > div > div > div > div.MuiFormControl-root.MuiTextField-root.MuiFormControl-fullWidth > div > input', 'Lima', { delay: 1 });
     await page.click('body > div.MuiDialog-root > div.MuiDialog-container.MuiDialog-scrollPaper > div > div > div.MuiCardContent-root > div > div > div.MuiPaper-root > div > div > div > div > div.MuiPaper-root');
   },
   async agregarConocimientos(page) {
@@ -138,7 +139,7 @@ const metod = {
       return
     })
 
-    await page.type('body > div.MuiDialog-root > div.MuiDialog-container.MuiDialog-scrollPaper > div > div > div.MuiCardContent-root > div > div > div.MuiPaper-root > div > div > div > div > div.MuiFormControl-root.MuiTextField-root.MuiFormControl-fullWidth > div > input', 'Testing', { delay: 200 })
+    await page.type('body > div.MuiDialog-root > div.MuiDialog-container.MuiDialog-scrollPaper > div > div > div.MuiCardContent-root > div > div > div.MuiPaper-root > div > div > div > div > div.MuiFormControl-root.MuiTextField-root.MuiFormControl-fullWidth > div > input', 'Testing', { delay: 1 })
     await page.click('body > div.MuiDialog-root > div.MuiDialog-container.MuiDialog-scrollPaper > div > div > div.MuiCardContent-root > div > div > div.MuiPaper-root > div > div > div > div > div.MuiPaper-root.MuiCard-root')
   },
 
@@ -150,7 +151,7 @@ const metod = {
       return
     })
 
-    await page.type('body > div.MuiDialog-root > div.MuiDialog-container.MuiDialog-scrollPaper > div > div > div.MuiCardContent-root > div > div > div.MuiPaper-root > div > div > div > div > div.MuiFormControl-root.MuiTextField-root.MuiFormControl-fullWidth > div > input', 'Testear', { delay: 200 })
+    await page.type('body > div.MuiDialog-root > div.MuiDialog-container.MuiDialog-scrollPaper > div > div > div.MuiCardContent-root > div > div > div.MuiPaper-root > div > div > div > div > div.MuiFormControl-root.MuiTextField-root.MuiFormControl-fullWidth > div > input', 'Testear', { delay: 1 })
     await page.click('body > div.MuiDialog-root > div.MuiDialog-container.MuiDialog-scrollPaper > div > div > div.MuiCardContent-root > div > div > div.MuiPaper-root > div > div > div > div > div.MuiPaper-root.MuiCard-root')
   },
 
@@ -182,8 +183,8 @@ const metod = {
       return
     })
 
-    await page.type('body > div.MuiDialog-root > div.MuiDialog-container.MuiDialog-scrollPaper > div > div > div.MuiCardContent-root > div > div > div > div > div.MuiCardContent-root > div > div > div:nth-child(1) > div > div > div:nth-child(1) > textarea:nth-child(1)', 'Pregunta 1', { delay: 100 })
-    await page.type('body > div.MuiDialog-root > div.MuiDialog-container.MuiDialog-scrollPaper > div > div > div.MuiCardContent-root > div > div > div > div > div.MuiCardContent-root > div > div > div:nth-child(1) > div > div > div:nth-child(2) > textarea:nth-child(1)', 'Respuesta 1', { delay: 100 })
+    await page.type('body > div.MuiDialog-root > div.MuiDialog-container.MuiDialog-scrollPaper > div > div > div.MuiCardContent-root > div > div > div > div > div.MuiCardContent-root > div > div > div:nth-child(1) > div > div > div:nth-child(1) > textarea:nth-child(1)', 'Pregunta 1', { delay: 1 })
+    await page.type('body > div.MuiDialog-root > div.MuiDialog-container.MuiDialog-scrollPaper > div > div > div.MuiCardContent-root > div > div > div > div > div.MuiCardContent-root > div > div > div:nth-child(1) > div > div > div:nth-child(2) > textarea:nth-child(1)', 'Respuesta 1', { delay: 1 })
   },
 
   async AgregarPregunta2(page) {
@@ -196,8 +197,8 @@ const metod = {
       busDiv.click();
       return
     })
-    await page.type('body > div.MuiDialog-root > div.MuiDialog-container.MuiDialog-scrollPaper > div > div > div.MuiCardContent-root > div > div > div > div > div.MuiCardContent-root > div > div > div:nth-child(2) > div > div > div:nth-child(1) > textarea:nth-child(1)', 'Pregunta 2', { delay: 100 })
-    await page.type('body > div.MuiDialog-root > div.MuiDialog-container.MuiDialog-scrollPaper > div > div > div.MuiCardContent-root > div > div > div > div > div.MuiCardContent-root > div > div > div:nth-child(2) > div > div > div:nth-child(2) > textarea:nth-child(1)', 'Respuesta 2', { delay: 100 })
+    await page.type('body > div.MuiDialog-root > div.MuiDialog-container.MuiDialog-scrollPaper > div > div > div.MuiCardContent-root > div > div > div > div > div.MuiCardContent-root > div > div > div:nth-child(2) > div > div > div:nth-child(1) > textarea:nth-child(1)', 'Pregunta 2', { delay: 1 })
+    await page.type('body > div.MuiDialog-root > div.MuiDialog-container.MuiDialog-scrollPaper > div > div > div.MuiCardContent-root > div > div > div > div > div.MuiCardContent-root > div > div > div:nth-child(2) > div > div > div:nth-child(2) > textarea:nth-child(1)', 'Respuesta 2', { delay: 1 })
   },
 
   async AgregarPregunta3(page) {
@@ -210,8 +211,8 @@ const metod = {
       busDiv.click();
       return
     })
-    await page.type('body > div.MuiDialog-root > div.MuiDialog-container.MuiDialog-scrollPaper > div > div > div.MuiCardContent-root > div > div > div > div > div.MuiCardContent-root > div > div > div:nth-child(3) > div > div > div:nth-child(1) > textarea:nth-child(1)', 'Pregunta 3', { delay: 100 })
-    await page.type('body > div.MuiDialog-root > div.MuiDialog-container.MuiDialog-scrollPaper > div > div > div.MuiCardContent-root > div > div > div > div > div.MuiCardContent-root > div > div > div:nth-child(3) > div > div > div:nth-child(2) > textarea:nth-child(1)', 'Respuesta 3', { delay: 100 })
+    await page.type('body > div.MuiDialog-root > div.MuiDialog-container.MuiDialog-scrollPaper > div > div > div.MuiCardContent-root > div > div > div > div > div.MuiCardContent-root > div > div > div:nth-child(3) > div > div > div:nth-child(1) > textarea:nth-child(1)', 'Pregunta 3', { delay: 1 })
+    await page.type('body > div.MuiDialog-root > div.MuiDialog-container.MuiDialog-scrollPaper > div > div > div.MuiCardContent-root > div > div > div > div > div.MuiCardContent-root > div > div > div:nth-child(3) > div > div > div:nth-child(2) > textarea:nth-child(1)', 'Respuesta 3', { delay: 1 })
   },
 
   async btnQuienEvalua(page) {
@@ -230,7 +231,7 @@ const metod = {
       return
     })
 
-    await page.type('body > div.MuiPopover-root > div.MuiPaper-root.MuiPopover-paper.MuiPaper-elevation8.MuiPaper-rounded > div > div.MuiCardContent-root > div > div > input', '10', { delay: 100 })
+    await page.type('body > div.MuiPopover-root > div.MuiPaper-root.MuiPopover-paper.MuiPaper-elevation8.MuiPaper-rounded > div > div.MuiCardContent-root > div > div > input', '10', { delay: 1 })
     await page.click('body > div.MuiPopover-root > div.MuiPaper-root.MuiPopover-paper.MuiPaper-elevation8.MuiPaper-rounded > div > div.MuiCardActions-root > button')
   },
 
@@ -276,15 +277,55 @@ const metod = {
     })
   },
 
-  async addCompetencia(page) {
+  async btnAddCompetencia(page) {
     console.log('Agregando Competencias');
     await page.waitForSelector('div.MuiDialog-container.MuiDialog-scrollPaper > div > div > div.MuiCardContent-root > div > div > div > div > div.MuiCardContent-root > div > button')
     await page.evaluate(() => {
       document.querySelector("body > div.MuiDialog-root > div.MuiDialog-container.MuiDialog-scrollPaper > div > div > div.MuiCardContent-root > div > div > div > div > div.MuiCardContent-root > div > button").click()
-      let listLabel = document.querySelectorAll("body > div > div.MuiPaper-root.MuiCard-root > div.MuiCardContent-root > div > div:nth-child(1) > div > label")
+    })
+    return true
+  },
+
+
+  async selectCheckBox(page) {
+    await page.waitForTimeout(3000)
+    console.log('select checbox');
+    const result = await page.evaluate(() => {
+      for (let i = 0; i < 3; i++) {
+        let label = document.querySelectorAll("body > div > div.MuiPaper-root.MuiCard-root > div.MuiCardContent-root > div > div:nth-child(1) > div > label")[i]
+        let a = label.querySelectorAll('span')
+        a[0].click()
+      }
       // listLabel[1].querySelector('span > span > input').querySelector(input).click()
-      let a = listLabel[0].querySelectorAll('input')
-      a.click()
+      // if (label) {
+      //   label.click()
+      //   for (let span in label.querySelectorAll('span')) {
+      //     span.click()
+      //   }
+      //   // label.querySelector('input') ? label.querySelector('input').click() : null
+      //   return "clicks terminados correctamente"
+      // } else {
+      //   return "label no existe"
+      // }
+    })
+    console.log("Resultado de clicks: " + result)
+    return
+  },
+
+  async btnGuardarVidConf(page) {
+    console.log('Click a Guardar');
+    await page.waitForSelector('body > div > div.MuiPaper-root.MuiCard-root > div.MuiCardContent-root > div > button.MuiButtonBase-root.MuiButton-root.MuiButton-contained')
+    await page.evaluate(() => {
+      document.querySelector("body > div > div.MuiPaper-root.MuiCard-root > div.MuiCardContent-root > div > button.MuiButtonBase-root.MuiButton-root.MuiButton-contained").click()
+      return
+    })
+  },
+
+  async btnActivarTarea(page) {
+    console.log('Activar Tarea');
+    await page.waitForSelector('body > div.MuiDialog-root > div.MuiDialog-container.MuiDialog-scrollPaper > div > div > div > div:nth-child(3) > button.MuiButtonBase-root.MuiButton-root.MuiButton-contained')
+    await page.evaluate(() => {
+      document.querySelector("body > div.MuiDialog-root > div.MuiDialog-container.MuiDialog-scrollPaper > div > div > div > div:nth-child(3) > button.MuiButtonBase-root.MuiButton-root.MuiButton-contained").click()
       return
     })
   }
