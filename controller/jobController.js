@@ -4,7 +4,19 @@ const scraperController = require('../puppeteer/pageController')
 module.exports.crearProyecto = async (req, res) => {
 
   const { numJobs, numKrowders } = req.body;
+  const listJobs = []
+  for(let i=0; i < numJobs; i++){
+    listJobs.push(scraperController(numKrowders))
+  }
 
-  let browserInstance = browserObject.startBrowser()
-  scraperController(browserInstance, numKrowders)
+  const resultScrap = await Promise.all(listJobs)
+  
+
+  // let browserInstance = browserObject.startBrowser() //launch -> browser
+  // scraperController(browserInstance, numKrowders) //scrap(browser)
+
+  // scraperController(numKrowders)
+
+  
+  
 }
