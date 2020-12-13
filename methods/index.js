@@ -2,8 +2,8 @@ const metod = {
   async iniciarSesion(page) {
     //await page.waitForTimeout(2000)
     console.log('Iniciando Sesion');
-    await page.type('div.MuiBox-root.jss193 > div:nth-child(1) > div > input', '')
-    await page.type('div.MuiBox-root.jss193 > div:nth-child(2) > div > input', '');
+    await page.type('div.MuiBox-root.jss193 > div:nth-child(1) > div > input', process.env.email)
+    await page.type('div.MuiBox-root.jss193 > div:nth-child(2) > div > input', process.env.password);
 
     await page.click('#root > div > div.MuiGrid-root.MuiGrid-item.MuiGrid-grid-xs-12.MuiGrid-grid-lg-4 > div > div.jss106 > div > div.MuiBox-root.jss193 > div.MuiBox-root.jss290.jss185 > button')
   },
@@ -242,7 +242,7 @@ const metod = {
   },
 
   async anadirKrowder(page, krowdy) {
-    console.log('Añadir Krowders');
+    console.log('Añadir Krowders::: ' + typeof krowdy);
     await page.waitForTimeout(1000)
     await page.evaluate(() => {
       document.querySelector("body > div.MuiDialog-root > div.MuiDialog-container.MuiDialog-scrollPaper > div > div > div.MuiCardContent-root > div > div > div:nth-child(2) > div > div.MuiCardContent-root > div > div > button").click()
@@ -250,7 +250,7 @@ const metod = {
     })
 
     await page.keyboard.down('Tab')
-    await page.type('body > div.MuiPopover-root > div.MuiPaper-root.MuiPopover-paper.MuiPaper-elevation8.MuiPaper-rounded > div > div.MuiCardContent-root > div > div > input', krowdy, { delay: 1 })
+    await page.type('body > div.MuiPopover-root > div.MuiPaper-root.MuiPopover-paper.MuiPaper-elevation8.MuiPaper-rounded > div > div.MuiCardContent-root > div > div > input', krowdy.toString())
     await page.click('body > div.MuiPopover-root > div.MuiPaper-root.MuiPopover-paper.MuiPaper-elevation8.MuiPaper-rounded > div > div.MuiCardActions-root > button')
   },
 

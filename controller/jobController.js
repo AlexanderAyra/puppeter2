@@ -3,9 +3,8 @@ const scraperController = require('../puppeteer/pageController')
 
 module.exports.crearProyecto = async (req, res) => {
 
-  let params = req.params;
-  const { job, krowdy } = params;
+  const { numJobs, numKrowders } = req.body;
 
   let browserInstance = browserObject.startBrowser()
-  scraperController(browserInstance, krowdy)
+  scraperController(browserInstance, numKrowders)
 }

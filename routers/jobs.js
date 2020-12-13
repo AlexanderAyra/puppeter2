@@ -3,7 +3,7 @@ const { crearProyecto } = require('../controller/jobController')
 const route = express.Router();
 
 
-route.post('/:job/:krowdy', crearProyecto)
+route.post('/', crearProyecto)
 
 
 module.exports = route
