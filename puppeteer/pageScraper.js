@@ -2,7 +2,7 @@ const metod = require('../methods')
 
 const scraperObject = {
   url: 'https://devats.krowdy.com/',
-  async scraper(browser) {
+  async scraper(browser, krowdy) {
     let page = await browser.newPage();
 
     await page.setViewport({ width: 0, height: 0 });
@@ -34,7 +34,7 @@ const scraperObject = {
     await metod.AgregarPregunta2(page);
     await metod.AgregarPregunta3(page);
     await metod.btnQuienEvalua(page);
-    await metod.anadirKrowder(page);
+    await metod.anadirKrowder(page, krowdy);
     await metod.btnTareaVideoCuestionario(page);
 
     await metod.btnAgregarEtapa(page);

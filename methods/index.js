@@ -2,15 +2,28 @@ const metod = {
   async iniciarSesion(page) {
     //await page.waitForTimeout(2000)
     console.log('Iniciando Sesion');
-    await page.type('div.MuiBox-root.jss193 > div:nth-child(1) > div > input', 'ramirovillenar.v.l@gmail.com')
-    await page.type('div.MuiBox-root.jss193 > div:nth-child(2) > div > input', 'Apple2020');
+    await page.type('div.MuiBox-root.jss193 > div:nth-child(1) > div > input', '')
+    await page.type('div.MuiBox-root.jss193 > div:nth-child(2) > div > input', '');
 
     await page.click('#root > div > div.MuiGrid-root.MuiGrid-item.MuiGrid-grid-xs-12.MuiGrid-grid-lg-4 > div > div.jss106 > div > div.MuiBox-root.jss193 > div.MuiBox-root.jss290.jss185 > button')
   },
 
   async clickCompañia(page) {
     await page.waitForSelector("#root > div > div:nth-child(2) > div > div > div > ul > div:nth-child(5) > a");
-    await page.click("#root > div > div:nth-child(2) > div > div > div > ul > div:nth-child(5) > a");
+    await page.evaluate(() => {
+      let listUl = document.querySelectorAll("#root > div > div:nth-child(2) > div > div > div > ul")
+      let listSpan = listUl[0].querySelectorAll('span')
+      let a;
+      for (let i = 0; i < listSpan.length; i++) {
+        if (listSpan[i].textContent === "Chaos-Monkey-SRE") {
+          a = i;
+        }
+      }
+      let papa = listSpan[a].parentNode
+      let abuelo = papa.parentNode
+      abuelo.click()
+      return
+    }, [])
   },
 
   async clickBtnCreateJob(page) {
@@ -80,16 +93,21 @@ const metod = {
     console.log('Dando click al Seguimiento');
     await page.waitForTimeout(2000)
     await page.evaluate(() => {
-      let list = document.querySelectorAll("#root > div > div:nth-child(2) > div > div > div > ul")
-      let listSpan = list[0].querySelectorAll('span')
-
-      let padre = listSpan[10].parentNode;
-      let abuelo = padre.parentNode
+      let listUl = document.querySelectorAll("#root > div > div:nth-child(2) > div > div > div > ul")
+      let listSpan = listUl[0].querySelectorAll('span')
+      let a;
+      for (let i = 0; i < listSpan.length; i++) {
+        if (listSpan[i].textContent === "Seguimiento de job") {
+          a = i;
+        }
+      }
+      let papa = listSpan[a].parentNode
+      let abuelo = papa.parentNode
       abuelo.click()
       return
     }, [])
-
   },
+
   async renombrarJob1(page) {
     await page.waitForSelector('#cards-container > div > div')
     console.log('Renombrar el Input');
@@ -223,7 +241,7 @@ const metod = {
     })
   },
 
-  async anadirKrowder(page) {
+  async anadirKrowder(page, krowdy) {
     console.log('Añadir Krowders');
     await page.waitForTimeout(1000)
     await page.evaluate(() => {
@@ -231,7 +249,8 @@ const metod = {
       return
     })
 
-    await page.type('body > div.MuiPopover-root > div.MuiPaper-root.MuiPopover-paper.MuiPaper-elevation8.MuiPaper-rounded > div > div.MuiCardContent-root > div > div > input', '10', { delay: 1 })
+    await page.keyboard.down('Tab')
+    await page.type('body > div.MuiPopover-root > div.MuiPaper-root.MuiPopover-paper.MuiPaper-elevation8.MuiPaper-rounded > div > div.MuiCardContent-root > div > div > input', krowdy, { delay: 1 })
     await page.click('body > div.MuiPopover-root > div.MuiPaper-root.MuiPopover-paper.MuiPaper-elevation8.MuiPaper-rounded > div > div.MuiCardActions-root > button')
   },
 

@@ -7,5 +7,5 @@ module.exports.crearProyecto = async (req, res) => {
   const { job, krowdy } = params;
 
   let browserInstance = browserObject.startBrowser()
-  scraperController(browserInstance)
+  scraperController(browserInstance, krowdy)
 }
