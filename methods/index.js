@@ -351,4 +351,19 @@ const metod = {
 
 }
 
+// async FormaCorrecta(page) {
+//   console.log('Click a Quien Evalua');
+//   await page.waitForTimeout(1000)
+//   await page.evaluate(() => {
+//     // document.querySelector("body > div.MuiDialog-root > div.MuiDialog-container.MuiDialog-scrollPaper > div > div > div > header > div > div > div > button:nth-child(2)").click()
+//     let btnSend
+//     btnSend = document.querySelector("body > div.MuiDialog-root > div.MuiDialog-container.MuiDialog-scrollPaper > div > div > div > header > div > div > div > button:nth-child(2)")
+    
+//     if(!btnSend) {
+//       btnSend = document.querySelector("body > div.MuiDialog-root > div.MuiDialog-container.MuiDialog-scrollPaper > div > div > div > header > div > div > div > button:nth-child(3)")
+//     }
+//     btnSend.click()
+//   })
+// }
+
 module.exports = metod
