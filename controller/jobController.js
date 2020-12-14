@@ -10,4 +10,6 @@ module.exports.crearProyecto = async (req, res) => {
   }
 
   const resultScrap = await Promise.all(listJobs)
+
+  console.log('Finalizo el proceso');
 }

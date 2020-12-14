@@ -31,8 +31,6 @@ const scraperObject = {
     await metod.ActivarTarea(page);
     await metod.clickVideoCuestionario(page);
     await metod.AgregarPregunta1(page);
-    await metod.AgregarPregunta2(page);
-    await metod.AgregarPregunta3(page);
     await metod.btnQuienEvalua(page);
     await metod.anadirKrowder(page, krowdy);
     await metod.btnTareaVideoCuestionario(page);
@@ -43,7 +41,9 @@ const scraperObject = {
     await metod.btnAddCompetencia(page);
     await metod.selectCheckBox(page);
     await metod.btnGuardarVidConf(page);
-    await metod.btnActivarTarea(page)
+    await metod.btnQuienEval(page);
+    await metod.btnSoliKrow(page);
+    await metod.btnActivarTarea(page);
   }
 }
 
