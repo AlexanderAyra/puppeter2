@@ -1,7 +1,7 @@
 const metod = require('../methods')
 
 const scraperObject = {
-  url: 'https://devats.krowdy.com/',
+  url: process.env.url,
   async scraper(browser, krowdy) {
     let page = await browser.newPage();
     await page.setViewport({ width: 0, height: 0 });

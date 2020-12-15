@@ -11,7 +11,7 @@ module.exports.crearProyecto = async (req, res) => {
     }
     const resultScrap = await Promise.all(listJobs)
     res.json({
-      success: true,
+      success: process.env.visible,
       message: 'Proceso exitoso'
     })
   } catch (error) {

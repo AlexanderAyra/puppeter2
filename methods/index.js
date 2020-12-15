@@ -7,10 +7,7 @@ const metod = {
 
     await page.evaluate(() => {
       let btnIngresar;
-      btnIngresar = document.querySelector('#root > div > div.MuiGrid-root.MuiGrid-item.MuiGrid-grid-xs-12.MuiGrid-grid-lg-4 > div > div.jss106 > div > div.MuiBox-root.jss193 > div.MuiBox-root.jss290.jss185 > button')
-      if (!btnIngresar) {
-        btnIngresar = document.querySelector('#root > div > div.MuiGrid-root.MuiGrid-item.MuiGrid-grid-xs-12.MuiGrid-grid-lg-4 > div > div.jss106 > div > div.MuiBox-root.jss193 > div.MuiBox-root.jss290.jss185 > button')
-      }
+      btnIngresar = document.querySelector('div.MuiGrid-root.MuiGrid-item.MuiGrid-grid-xs-12.MuiGrid-grid-lg-4 > div > div.jss106 > div > div.MuiBox-root.jss193 > div.MuiBox-root.jss290.jss185 > button')
       btnIngresar.click();
       return
     })
@@ -20,13 +17,11 @@ const metod = {
     await page.evaluate(() => {
       let listUl;
       listUl = document.querySelectorAll("div:nth-child(2) > div > div > div > ul")
-      if (!listUl) {
-        listUl = document.querySelectorAll("div > div > ul")
-      }
       let listSpan = listUl[0].querySelectorAll('span')
       let a;
       for (let i = 0; i < listSpan.length; i++) {
-        if (listSpan[i].textContent === "Chaos-Monkey-SRE") {
+        let nom = listSpan[i].textContent;
+        if (nom.indexOf("key") === 9) {
           a = i;
         }
       }
@@ -42,9 +37,6 @@ const metod = {
     await page.waitForTimeout(1000)
     await page.evaluate(() => {
       let btnClick = document.querySelector('main > div > div > div > button.MuiButtonBase-root.MuiButton-root.MuiButton-contained')
-      if (!btnClick) {
-        btnClick = document.querySelector('div > div > button.MuiButtonBase-root.MuiButton-root.MuiButton-contained')
-      }
       let a = btnClick.querySelectorAll('span')
       let respt = false;
       for (let i = 0; i < a.length; i++) {
@@ -77,9 +69,6 @@ const metod = {
     await page.waitForSelector('div.header > div.title > div > div > div > div > div > div > button')
     await page.evaluate(() => {
       let btnFech = document.querySelector("div.header > div.title > div > div > div > div > div > div > button")
-      if (!btnFech) {
-        btnFech = document.querySelector("div.header > div.title > div > div > div > div > div > div > button")
-      }
       if (btnFech.children.length === 2) {
         let b = btnFech.children
         if (b[0].children.length === 1 && b[1].children.length === 0) {
@@ -87,9 +76,7 @@ const metod = {
         }
       }
       let btnBusc = document.querySelector("div:nth-child(1) > div.MuiPickersCalendarHeader-switchHeader > button:nth-child(3)");
-      if (!btnBusc) {
-        btnBusc = document.querySelector("div > div > div:nth-child(1) > div.MuiPickersCalendarHeader-switchHeader > button:nth-child(3)");
-      }
+
       if (btnBusc.children.length === 2) {
         let b = btnBusc.children
         if (b[0].children.length === 1 && b[1].children.length === 0) {
@@ -97,9 +84,6 @@ const metod = {
         }
       }
       let global = document.querySelectorAll('div.MuiPaper-root.MuiPopover-paper.MuiPaper-elevation8.MuiPaper-rounded > div > div > div.MuiPickersSlideTransition-transitionContainer.MuiPickersCalendar-transitionContainer > div')
-      if (!global) {
-        global = document.querySelectorAll('div.MuiPaper-root.MuiPopover-paper.MuiPaper-elevation8.MuiPaper-rounded > div > div > div.MuiPickersSlideTransition-transitionContainer.MuiPickersCalendar-transitionContainer > div')
-      }
       let semanas = global[0].querySelectorAll('div');
       let dia = semanas[16].querySelectorAll('div');
       dia[3].click();
@@ -108,12 +92,9 @@ const metod = {
 
   async AgregandoCompañia(page) {
     console.log("select dropdown");
-    await page.waitForSelector('#job-company-container > div > a')
+    await page.waitForSelector('#job-company-container > div > a');
     await page.evaluate(() => {
       let btnCompa = document.querySelector('#job-company-container > div > a');
-      if (!btnCompa) {
-        btnCompa = document.querySelector('#job-company-container > div > a');
-      }
       btnCompa.click();
       return
     })
@@ -129,10 +110,8 @@ const metod = {
   async btnPublicar(page) {
     console.log('Publicar Job');
     await page.waitForTimeout(1000);
-
     await page.evaluate(() => {
       let btn = document.querySelectorAll('button')
-      let x;
       for (let i = 0; i < btn.length; i++) {
         let a = btn[i].children
         for (let e = 0; e < a.length; e++) {
@@ -141,13 +120,6 @@ const metod = {
           }
         }
       }
-
-
-      // let btnPub = document.querySelector("main > div > div > div > div > button")
-      // if (!btnPub) {
-      //   btnPub = document.querySelector("#root > div > div:nth-child(2) > div > main > div > div > div > div > button")
-      // }
-      // btnPub.click()
       return
     })
   },
@@ -182,11 +154,7 @@ const metod = {
     console.log('Renombrar el Input');
 
     await page.evaluate(() => {
-      let btnClick;
-      btnClick = document.querySelector('#asociate-company > span');
-      if (!btnClick) {
-        btnClick = document.querySelector('#asociate-company > span');
-      }
+      let btnClick = document.querySelector('#asociate-company > span');
       btnClick.click()
     })
     await page.focus('#asociate-company > div > div > input');
@@ -204,19 +172,12 @@ const metod = {
     await page.waitForSelector('#cards-container > div > div > div > div > div > div > div > button:nth-child(2)')
     await page.evaluate(() => {
       let clickTarea = document.querySelector('#cards-container > div > div > div > div > div > div > div > button:nth-child(2)');
-      if (!clickTarea) {
-        clickTarea = document.querySelector('#cards-container > div > div > div > div > div > div > div > button:nth-child(2)');
-      }
       clickTarea.click();
     })
     console.log('Agregar Tarea');
     await page.waitForSelector('#wrapped-tabpanel-tasks > div > button');
     await page.evaluate(() => {
-      let btnAddTares;
-      btnAddTares = document.querySelector('#wrapped-tabpanel-tasks > div > button');
-      if (!btnAddTares) {
-        btnAddTares = document.querySelector('#wrapped-tabpanel-tasks > div > button');
-      }
+      let btnAddTares = document.querySelector('#wrapped-tabpanel-tasks > div > button');
       btnAddTares.click();
     })
   },
@@ -225,11 +186,18 @@ const metod = {
     console.log('Click al formulario');
     await page.waitForSelector('main > div > div > div > div:nth-child(4) > div')
     await page.evaluate(() => {
-      let btnFormulario = document.querySelector("main > div > div > div > div:nth-child(4) > div")
-      if (!btnFormulario) {
-        btnFormulario = document.querySelector("div:nth-child(4) > div")
+      let a = document.querySelectorAll("main > div > div")
+      for (let i = 0; i < a.length; i++) {
+        let b = a[1].lastChild
+        let c = b.children
+        for (let o = 0; o < c.length; o++) {
+          let d = c[o].querySelectorAll('span')[0].textContent
+          if (d.indexOf('Formulario') === 0) {
+            c[o].lastElementChild.click()
+          }
+        }
       }
-      btnFormulario.click()
+
       return
     })
   },
@@ -239,17 +207,11 @@ const metod = {
     await page.waitForSelector('div.MuiCardContent-root > div > div > div.MuiPaper-root.MuiPaper-outlined.MuiPaper-rounded > div > button');
     await page.evaluate(() => {
       let btnAddLocacion = document.querySelector('div.MuiCardContent-root > div > div > div.MuiPaper-root.MuiPaper-outlined.MuiPaper-rounded > div > button');
-      if (!btnAddLocacion) {
-        btnAddLocacion = document.querySelector('div.MuiCardContent-root > div > div > div.MuiPaper-root.MuiPaper-outlined.MuiPaper-rounded > div > button');
-      }
       btnAddLocacion.click()
     })
     await page.type('body > div.MuiDialog-root > div.MuiDialog-container.MuiDialog-scrollPaper > div > div > div.MuiCardContent-root > div > div > div > div > div > div > div > div.MuiFormControl-root.MuiTextField-root.MuiFormControl-fullWidth > div > input', 'Lima', { delay: 1 });
     await page.evaluate(() => {
       let btnAddElecion = document.querySelector('div.MuiDialog-container.MuiDialog-scrollPaper > div > div > div.MuiCardContent-root > div > div > div.MuiPaper-root > div > div > div > div > div.MuiPaper-root');
-      if (!btnAddElecion) {
-        btnAddElecion = document.querySelector('body > div.MuiDialog-root > div.MuiDialog-container.MuiDialog-scrollPaper > div > div > div.MuiCardContent-root > div > div > div.MuiPaper-root > div > div > div > div > div.MuiPaper-root');
-      }
       btnAddElecion.click();
     })
   },
@@ -261,7 +223,8 @@ const metod = {
       let b = a.querySelectorAll('div > span')
       let i = 0;
       while (i % 2 === 0) {
-        if (b[i].lastChild.textContent === '2. Conocimientos') {
+        let x = b[i].lastChild.textContent;
+        if (x.indexOf('Conocimient') === 3) {
           b[i].click()
         }
         i += 2;
@@ -271,9 +234,6 @@ const metod = {
       }
 
       let btnAddConoc = document.querySelector("div.MuiCardContent-root > div > div > div.MuiPaper-root > div > button")
-      if (!btnAddConoc) {
-        btnAddConoc = document.querySelector("div.MuiCardContent-root > div > div > div.MuiPaper-root > div > button")
-      }
       btnAddConoc.click()
       return
     })
@@ -289,7 +249,8 @@ const metod = {
       let b = a.querySelectorAll('div > span')
       let i = 0;
       while (i % 2 === 0) {
-        if (b[i].lastChild.textContent === '3. Funciones') {
+        let x = b[i].lastChild.textContent
+        if (x.indexOf('iones') === 7) {
           b[i].click()
         }
         i += 2;
@@ -299,9 +260,6 @@ const metod = {
       }
 
       let addFuncion = document.querySelector("body > div.MuiDialog-root > div.MuiDialog-container.MuiDialog-scrollPaper > div > div > div.MuiCardContent-root > div > div > div.MuiPaper-root > div > button");
-      if (!addFuncion) {
-        addFuncion = document.querySelector("body > div.MuiDialog-root > div.MuiDialog-container.MuiDialog-scrollPaper > div > div > div.MuiCardContent-root > div > div > div.MuiPaper-root > div > button");
-      }
       addFuncion.click()
       return
     })
@@ -313,9 +271,6 @@ const metod = {
     console.log('Click  a Activar Tarea');
     await page.evaluate(() => {
       let activarTare = document.querySelector("div.MuiDialog-container.MuiDialog-scrollPaper > div > div > div > div:nth-child(3) > button.MuiButtonBase-root.MuiButton-root.MuiButton-contained")
-      if (!activarTare) {
-        activarTare = document.querySelector("div.MuiDialog-container.MuiDialog-scrollPaper > div > div > div > div:nth-child(3) > button.MuiButtonBase-root.MuiButton-root.MuiButton-contained")
-      }
       activarTare.click();
       return
     })
@@ -324,11 +279,17 @@ const metod = {
     console.log('Cliack al Video Cuestionario');
     await page.waitForSelector("div:nth-child(2) > div > main > div > div > div > div:nth-child(2) > div")
     await page.evaluate(() => {
-      let clickVideoC = document.querySelector("div:nth-child(2) > div > main > div > div > div > div:nth-child(2) > div")
-      if (!clickVideoC) {
-        clickVideoC = document.querySelector("div:nth-child(2) > div > main > div > div > div > div:nth-child(2) > div")
+      let a = document.querySelectorAll("main > div > div")
+      for (let i = 0; i < a.length; i++) {
+        let b = a[1].lastChild
+        let c = b.children
+        for (let o = 0; o < c.length; o++) {
+          let d = c[o].querySelectorAll('span')[0].textContent
+          if (d.indexOf('Cuestionario') === 6) {
+            c[o].lastElementChild.click()
+          }
+        }
       }
-      clickVideoC.click()
       return
     })
   },
@@ -337,9 +298,6 @@ const metod = {
     console.log('Agregando preunta 1');
     await page.evaluate(() => {
       let listDiv = document.querySelectorAll("div.MuiCardContent-root > div > div > div > div > div.MuiCardContent-root > div > div")
-      if (!listDiv) {
-        listDiv = document.querySelectorAll("div.MuiCardContent-root > div > div > div > div > div.MuiCardContent-root > div > div")
-      }
       let listArea = listDiv[0].querySelectorAll('textarea')
       let busDiv = listArea[0].parentNode
       busDiv.click();
@@ -354,9 +312,6 @@ const metod = {
     await page.waitForTimeout(1000)
     await page.evaluate(() => {
       let clickQuienEvalua = document.querySelector("div.MuiDialog-container.MuiDialog-scrollPaper > div > div > div > header > div > div > div > button:nth-child(2)")
-      if (!clickQuienEvalua) {
-        clickQuienEvalua = document.querySelector("div.MuiDialog-container.MuiDialog-scrollPaper > div > div > div > header > div > div > div > button:nth-child(2)")
-      }
       clickQuienEvalua.click()
     })
   },
@@ -365,9 +320,6 @@ const metod = {
     await page.waitForTimeout(1000)
     await page.evaluate(() => {
       let addKrowder = document.querySelector("div.MuiCardContent-root > div > div > div:nth-child(2) > div > div.MuiCardContent-root > div > div > button")
-      if (!addKrowder) {
-        addKrowder = document.querySelector("div.MuiCardContent-root > div > div > button")
-      }
       addKrowder.click();
       return
     })
@@ -376,9 +328,6 @@ const metod = {
     await page.type('div.MuiPaper-root.MuiPopover-paper.MuiPaper-elevation8.MuiPaper-rounded > div > div.MuiCardContent-root > div > div > input', krowdy.toString())
     await page.evaluate(() => {
       let clickAddKrowd = document.querySelector('div.MuiPaper-root.MuiPopover-paper.MuiPaper-elevation8.MuiPaper-rounded > div > div.MuiCardActions-root > button');
-      if (!clickAddKrowd) {
-        clickAddKrowd = document.querySelector('div.MuiPaper-root.MuiPopover-paper.MuiPaper-elevation8.MuiPaper-rounded > div > div.MuiCardActions-root > button');
-      }
       clickAddKrowd.click()
     })
   },
@@ -387,9 +336,6 @@ const metod = {
     console.log('Click activar Tarea');
     await page.evaluate(() => {
       let activarTarea = document.querySelector("div.MuiDialog-container.MuiDialog-scrollPaper > div > div > div > div:nth-child(3) > button.MuiButtonBase-root.MuiButton-root.MuiButton-contained")
-      if (!activarTarea) {
-        activarTarea = document.querySelector("div.MuiDialog-container.MuiDialog-scrollPaper > div > div > div > div:nth-child(3) > button.MuiButtonBase-root.MuiButton-root.MuiButton-contained")
-      }
       activarTarea.click()
       return
     })
@@ -402,9 +348,6 @@ const metod = {
     await page.waitForSelector("#cards-container > button")
     await page.evaluate(() => {
       let newEtapa = document.querySelector("#cards-container > button")
-      if (!newEtapa) {
-        newEtapa = document.querySelector("#cards-container > button")
-      }
       newEtapa.click()
       return
     })
@@ -414,9 +357,6 @@ const metod = {
     await page.waitForTimeout(1500)
     await page.evaluate(() => {
       let newTare = document.querySelector("#cards-container > div:nth-child(2) > div > div > div.MuiCardContent-root > div.MuiTabs-root > div > div > button:nth-child(2)")
-      if (!newTare) {
-        newTare = document.querySelector("#cards-container > div:nth-child(2) > div > div > div.MuiCardContent-root > div.MuiTabs-root > div > div > button:nth-child(2)")
-      }
       newTare.click()
       let listDiv = document.querySelectorAll("#cards-container > div")
       let div2 = listDiv[listDiv.length - 1].querySelectorAll('button')
@@ -435,11 +375,17 @@ const metod = {
     console.log('Click Video Entrevista');
     await page.waitForSelector("main > div > div > div > div:nth-child(7) > div")
     await page.evaluate(() => {
-      let btnVidEntre = document.querySelector("main > div > div > div > div:nth-child(7) > div")
-      if (!btnVidEntre) {
-        btnVidEntre = document.querySelector("main > div > div > div > div:nth-child(7) > div")
+      let a = document.querySelectorAll("main > div > div")
+      for (let i = 0; i < a.length; i++) {
+        let b = a[1].lastChild
+        let c = b.children
+        for (let o = 0; o < c.length; o++) {
+          let d = c[o].querySelectorAll('span')[0].textContent
+          if (d.indexOf('Entrevista') === 6) {
+            c[o].lastElementChild.click()
+          }
+        }
       }
-      btnVidEntre.click()
       return
     })
   },
@@ -448,9 +394,6 @@ const metod = {
     await page.waitForSelector('div.MuiCardContent-root > div > div > div > div > div.MuiCardContent-root > div > button')
     await page.evaluate(() => {
       let addCompe = document.querySelector('div.MuiCardContent-root > div > div > div > div > div.MuiCardContent-root > div > button')
-      if (!addCompe) {
-        addCompe = document.querySelector('div.MuiCardContent-root > div > div > div > div > div.MuiCardContent-root > div > button')
-      }
       addCompe.click()
     })
     return true
@@ -463,9 +406,6 @@ const metod = {
     const result = await page.evaluate(() => {
       for (let i = 0; i < 3; i++) {
         let label = document.querySelectorAll("div.MuiCardContent-root > div > div:nth-child(1) > div > label")[i]
-        if (!label) {
-          label = document.querySelectorAll("div.MuiCardContent-root > div > div:nth-child(1) > div > label")[i]
-        }
         label.click()
       }
     })
@@ -477,9 +417,6 @@ const metod = {
     await page.waitForSelector('div.MuiCardContent-root > div > button.MuiButtonBase-root.MuiButton-root.MuiButton-contained')
     await page.evaluate(() => {
       let clickGuardar = document.querySelector("div.MuiCardContent-root > div > button.MuiButtonBase-root.MuiButton-root.MuiButton-contained")
-      if (!clickGuardar) {
-        clickGuardar = document.querySelector("div.MuiCardContent-root > div > button.MuiButtonBase-root.MuiButton-root.MuiButton-contained")
-      }
       clickGuardar.click()
       return
     })
@@ -490,9 +427,6 @@ const metod = {
     await page.waitForSelector("div.MuiDialog-root > div.MuiDialog-container.MuiDialog-scrollPaper > div > div > div > header > div > div > div > button:nth-child(2)")
     await page.evaluate(() => {
       let btnQuienEv = document.querySelector("div.MuiDialog-root > div.MuiDialog-container.MuiDialog-scrollPaper > div > div > div > header > div > div > div > button:nth-child(2)")
-      if (!btnQuienEv) {
-        btnQuienEv = document.querySelector("div.MuiDialog-root > div.MuiDialog-container.MuiDialog-scrollPaper > div > div > div > header > div > div > div > button:nth-child(2)")
-      }
       btnQuienEv.click();
     })
   },
@@ -517,9 +451,6 @@ const metod = {
     await page.waitForSelector("div.MuiDialog-container.MuiDialog-scrollPaper > div > div > div > div:nth-child(3) > button.MuiButtonBase-root.MuiButton-root.MuiButton-contained")
     await page.evaluate(() => {
       let btnActivar = document.querySelector("div.MuiDialog-container.MuiDialog-scrollPaper > div > div > div > div:nth-child(3) > button.MuiButtonBase-root.MuiButton-root.MuiButton-contained")
-      if (!btnActivar) {
-        btnActivar = document.querySelector("div.MuiDialog-container.MuiDialog-scrollPaper > div > div > div > div:nth-child(3) > button.MuiButtonBase-root.MuiButton-root.MuiButton-contained")
-      }
       btnActivar.click()
       return
     })
