@@ -4,9 +4,7 @@ const scraperObject = {
   url: 'https://devats.krowdy.com/',
   async scraper(browser, krowdy) {
     let page = await browser.newPage();
-
     await page.setViewport({ width: 0, height: 0 });
-
     await page.goto(this.url);
     await metod.iniciarSesion(page);
     await page.waitForTimeout(3000);
@@ -44,6 +42,7 @@ const scraperObject = {
     await metod.btnQuienEval(page);
     await metod.btnSoliKrow(page);
     await metod.btnActivarTarea(page);
+    await page.close();
   }
 }
 

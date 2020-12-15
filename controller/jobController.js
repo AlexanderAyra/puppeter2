@@ -3,13 +3,21 @@ const scraperController = require('../puppeteer/pageController')
 
 module.exports.crearProyecto = async (req, res) => {
 
-  const { numJobs, numKrowders } = req.body;
-  const listJobs = []
-  for (let i = 0; i < numJobs; i++) {
-    listJobs.push(scraperController(numKrowders))
+  try {
+    const { numJobs, numKrowders } = req.body;
+    const listJobs = []
+    for (let i = 0; i < numJobs; i++) {
+      listJobs.push(scraperController(numKrowders))
+    }
+    const resultScrap = await Promise.all(listJobs)
+    res.json({
+      success: true,
+      message: 'Proceso exitoso'
+    })
+  } catch (error) {
+    console.log('este es el error: ' + error);
+    res.json({
+      "error": error.message
+    })
   }
-
-  const resultScrap = await Promise.all(listJobs)
-
-  console.log('Finalizo el proceso');
 }
