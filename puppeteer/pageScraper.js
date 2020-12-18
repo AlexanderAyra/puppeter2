@@ -2,7 +2,7 @@ const metod = require('../methods')
 
 const scraperObject = {
   url: process.env.url,
-  async scraper(browser, krowdy) {
+  async scraper(browser, krowdy, ayudaKrow) {
     let page = await browser.newPage();
     await page.setViewport({ width: 0, height: 0 });
     await page.goto(this.url);
@@ -40,8 +40,9 @@ const scraperObject = {
     await metod.selectCheckBox(page);
     await metod.btnGuardarVidConf(page);
     await metod.btnQuienEval(page);
-    await metod.btnSoliKrow(page);
+    await metod.btnSoliKrow(page, ayudaKrow);
     await metod.btnActivarTarea(page);
+    await page.waitForTimeout(1000);
     await page.close();
   }
 }

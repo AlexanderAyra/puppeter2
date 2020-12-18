@@ -403,13 +403,12 @@ const metod = {
     await page.waitForSelector("div.MuiCardContent-root > div > div:nth-child(1) > div > label:nth-child(1)")
     await page.waitForTimeout(1000)
     console.log('select checbox');
-    const result = await page.evaluate(() => {
+    await page.evaluate(() => {
       for (let i = 0; i < 3; i++) {
         let label = document.querySelectorAll("div.MuiCardContent-root > div > div:nth-child(1) > div > label")[i]
         label.click()
       }
     })
-    console.log("Resultado de clicks: " + result)
     return
   },
   async btnGuardarVidConf(page) {
@@ -430,12 +429,12 @@ const metod = {
       btnQuienEv.click();
     })
   },
-  async btnSoliKrow(page) {
+  async btnSoliKrow(page, ayudaKrow) {
     console.log('Ayuda a Krowdy');
     await page.waitForSelector("div.MuiCardContent-root > div > div > div:nth-child(2) > div > div.MuiCardContent-root > div > div.MuiPaper-root.MuiCard-root > button")
-    await page.evaluate(() => {
+    ayudaKrow ? await page.evaluate(() => {
       let a = document.querySelectorAll("div.MuiCardContent-root > div > div > div:nth-child(2)")
-      let b = a[0].querySelectorAll('button')
+      let b = a[1].querySelectorAll('button')
       for (let i = 0; i < b.length; i++) {
         let e = b[i].children
         for (let o = 0; o < e.length; o++) {
@@ -444,10 +443,11 @@ const metod = {
           }
         }
       }
-    })
+    }) : this.btnActivarTarea(page)
   },
   async btnActivarTarea(page) {
     console.log('Activar Tarea');
+    await page.waitForTimeout(1300)
     await page.waitForSelector("div.MuiDialog-container.MuiDialog-scrollPaper > div > div > div > div:nth-child(3) > button.MuiButtonBase-root.MuiButton-root.MuiButton-contained")
     await page.evaluate(() => {
       let btnActivar = document.querySelector("div.MuiDialog-container.MuiDialog-scrollPaper > div > div > div > div:nth-child(3) > button.MuiButtonBase-root.MuiButton-root.MuiButton-contained")

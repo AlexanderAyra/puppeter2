@@ -1,10 +1,11 @@
 const pageScraper = require('./pageScraper')
 const puppeteer = require('puppeteer')
 
-async function scrapeAll(numKrowder) {
+async function scrapeAll(numKrowder, ayudaKrow) {
+  console.log(ayudaKrow);
   let browser;
   browser = await startBrowser();
-  return await pageScraper.scraper(browser, numKrowder);
+  return await pageScraper.scraper(browser, numKrowder, ayudaKrow);
 }
 
 async function startBrowser() {
@@ -19,4 +20,4 @@ async function startBrowser() {
   return browser;
 }
 
-module.exports = (numKrowder) => scrapeAll(numKrowder)
+module.exports = (numKrowder, ayudaKrow) => scrapeAll(numKrowder, ayudaKrow)
